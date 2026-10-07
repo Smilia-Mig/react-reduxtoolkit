@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  desenvolvedora: 'Ana Beatriz de Moraes',
+  area: 'Biomecatrônica',
+  projetoAtual: 'Exosqueleto / Perna Robótica Assistiva',
+  fase: 'Testes Iniciais de Junta',
   list: [],
   logs: [
     `[${new Date().toLocaleTimeString('pt-BR')}] INFO: Sistema de Monitoramento P&D Inicializado.`
@@ -12,6 +16,12 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    avancarFase: (state, action) => {
+      state.fase = action.payload;
+      state.logs.unshift(
+        `[${new Date().toLocaleTimeString('pt-BR')}] ACTION: Fase atualizada para -> "${action.payload}"`
+      );
+    },
     addRegistro: (state, action) => {
       state.list.push(action.payload);
       state.logs.unshift(
@@ -19,7 +29,6 @@ const userSlice = createSlice({
       );
     },
     removeRegistro: (state, action) => {
-      const itemRemovido = state.list.find((item) => item.id === action.payload);
       state.list = state.list.filter((item) => item.id !== action.payload);
       state.logs.unshift(
         `[${new Date().toLocaleTimeString('pt-BR')}] WARN: Registro removido -> ID ${action.payload}`
@@ -43,6 +52,7 @@ const userSlice = createSlice({
 });
 
 export const {
+  avancarFase,
   addRegistro,
   removeRegistro,
   setRegistros,
