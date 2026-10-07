@@ -25,6 +25,24 @@ Aplicação web desenvolvida com **React**, **Redux Toolkit** e **Vite** para mo
   - Interface otimizada com **CSS Grid** para adaptação fluida em dispositivos móveis e desktops.
 
 ---
+---
+
+## 📊 Sistema de Monitoramento & Console de Logs em Tempo Real (Semana 21)
+
+Nesta etapa do projeto, implementamos um middleware customizado no **Redux Toolkit** focado em rastreabilidade, auditoria e debug do fluxo de dados da aplicação em tempo real.
+
+### 🛠️ Funcionalidades Implementadas:
+- **Redux Custom Middleware (`loggerMiddleware`)**: Intercepta todas as *actions* disparadas no estado global, registrando automaticamente no console do navegador (`console.group`):
+  - O horário exato do evento (`timestamp`);
+  - O estado anterior da aplicação (`store.getState()`);
+  - Os dados recebidos no `payload`;
+  - O novo estado atualizado.
+- **Painel de Logs na Interface (UI)**: Exibição visual de logs do sistema em formato *terminal/console* em tempo real.
+- **Simulação de Eventos & Telemetria**:
+  - Carga assíncrona de dados de telemetria (atuadores e sinais EMG);
+  - Botão de **Simulação de Erros de Sensores** (ex: falhas no barramento CAN).
+
+---
 
 ## 📂 Estrutura do Projeto
 
